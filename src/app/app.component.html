@@ -1,0 +1,39 @@
+<div>
+  <h1>WebSocket Real-Time Data</h1>
+
+  <div>
+    <p>
+      Connection Status:
+      <b [class.connected]="connectionStatus">
+        {{ connectionStatus ? "Connected" : "Disconnected" }}
+      </b>
+    </p>
+  </div>
+
+  <div>
+    <input type="text" [(ngModel)]="inputValue" placeholder="Enter text" />
+    <button (click)="addData()">Add</button>
+  </div>
+
+  <div>
+    <h2>Data List:</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Value</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of data">
+          <td>{{ item.id }}</td>
+          <td>{{ item.value }}</td>
+          <td>
+            <button (click)="deleteData(item.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
